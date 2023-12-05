@@ -6,7 +6,7 @@ import './webflow.css';
 import './normalize.css';
 import './smartspyai.webflow.css';
 import Footer from '../components/footer';
-import Header from '../components/header';
+import DashboardHeader from '../components/header';
 
 const manrope = Manrope({ subsets: ['latin'] });
 // const openSans = Open_Sans({ subsets: ['latin'] });

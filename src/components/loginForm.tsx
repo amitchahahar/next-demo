@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 // import loading from '../assets/Spinner-1s-200px (1).gif';
 // import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import md5 from 'md5';
 import axiosInstance from '@/utils/axiosInstance';
 import useIdleTimeout from '@/utils/useIdleTimerHook';
@@ -20,7 +20,7 @@ const LoginForm = (props: any): JSX.Element => {
 		console.log('Clicked', recoverEmail);
 
 		if (!EmailRegex.test(recoverEmail)) {
-			toast.error('Enter a valid email');
+			// toast.error('Enter a valid email');
 		} else {
 			try {
 				const response = await axiosInstance.post(
@@ -38,28 +38,28 @@ const LoginForm = (props: any): JSX.Element => {
 					props.close(false);
 					setIsLogin(true);
 					setRecoverEmailAddress('');
-					toast.success(response.data.message);
+					// toast.success(response.data.message);
 				} else {
 					props.close(false);
 					setIsLogin(true);
 					setRecoverEmailAddress('');
-					toast.error(response.data.message);
+					// toast.error(response.data.message);
 				}
 			} catch (error: any) {
 				setRecoverEmailAddress('');
-				toast.error(error.response.data.message);
+				// toast.error(error.response.data.message);
 			}
 		}
 	};
 
 	const submit = async () => {
 		if (!EmailRegex.test(loginEmail)) {
-			toast.error('Enter a valid email');
+			// toast.error('Enter a valid email');
 		} else if (
 			EmailRegex.test(loginEmail) &&
 			loginPassword == ''
 		) {
-			toast.error('Enter a password');
+			// toast.error('Enter a password');
 		} else {
 			setIsLoading(true);
 			let data = {
@@ -82,10 +82,10 @@ const LoginForm = (props: any): JSX.Element => {
 				window.location.reload();
 			} catch (error: any) {
 				setIsLoading(false);
-				toast.error(
-					error?.response?.data?.message ||
-						'Invalid username or password'
-				);
+				// toast.error(
+				// 	error?.response?.data?.message ||
+				// 		'Invalid username or password'
+				// );
 			}
 		}
 	};

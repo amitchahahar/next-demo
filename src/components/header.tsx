@@ -28,22 +28,22 @@ const DashboardHeader = () => {
 		useState<boolean>(false);
 	const [scrollPosition, setScrollPosition] =
 		useState<number>(0);
-	const handleScroll = () => {
-		setScrollPosition(window.scrollY);
-	};
+	// const handleScroll = () => {
+	// 	setScrollPosition(window.scrollY);
+	// };
 
-	const closePopup = () => {
-		setShowLoginModal(false);
-		document.getElementsByTagName(
-			'body'
-		)[0].style.overflow = 'auto';
-	};
-	const logout = () => {
-		localStorage.removeItem('idleScreenLogout');
-		localStorage.removeItem('token');
-		// navigate('/');
-		window.location.reload();
-	};
+	// 	const closePopup = () => {
+	// 		setShowLoginModal(false);
+	// 		document.getElementsByTagName(
+	// 			'body'
+	// 		)[0].style.overflow = 'auto';
+	// 	};
+	// const logout = () => {
+	// 	localStorage.removeItem('idleScreenLogout');
+	// 	localStorage.removeItem('token');
+	// 	// navigate('/');
+	// 	window.location.reload();
+	// };
 	// const alpha = () => {
 	// 	const height = location?.pathname?.includes('/blog')
 	// 		? 200
@@ -55,13 +55,13 @@ const DashboardHeader = () => {
 	// 	return alphaDecimal;
 	// };
 	// console.log("alpha()",alpha());
-	useEffect(() => {
-		window.addEventListener('scroll', handleScroll);
+	// useEffect(() => {
+	// 	window.addEventListener('scroll', handleScroll);
 
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
+	// 	return () => {
+	// 		window.removeEventListener('scroll', handleScroll);
+	// 	};
+	// }, []);
 	return (
 		<>
 			<div className='information-modal'>
@@ -227,7 +227,7 @@ const DashboardHeader = () => {
 					</div>
 				</div>
 			</div>
-			<Modal
+			{/* <Modal
 				show={showLoginModal}
 				onClose={() => closePopup()}
 				size={'xl'}
@@ -242,7 +242,7 @@ const DashboardHeader = () => {
 						close={setShowLoginModal}
 					/>
 				</Modal.Body>
-			</Modal>
+			</Modal> */}
 		</>
 	);
 };
