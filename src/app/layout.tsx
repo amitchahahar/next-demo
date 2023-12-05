@@ -23,14 +23,14 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			{/* <body className='body'> */}
-			<div className='body-smartspyai-home'>
-				<Header />
-				{children}
+			<body className='body'>
+				<div className='body-smartspyai-home'>
+					<DashboardHeader />
+					{children}
 
-				<Footer />
-			</div>
-			{/* </body> */}
+					<Footer />
+				</div>
+			</body>
 		</html>
 	);
 }
