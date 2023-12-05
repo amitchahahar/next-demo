@@ -1,7 +1,45 @@
 import Image from 'next/image';
 import blogList from '../../../utils/blogData.json';
-import Head from 'next/head';
+import { Metadata } from 'next';
 
+export async function generateMetadata({
+	params,
+}: any): Promise<Metadata> {
+	const { slug } = params;
+	console.log(slug);
+	const blogObj = blogList.find((item, index) => {
+		return item.Slug == slug;
+	});
+	return {
+		title: slug,
+		description: blogObj?.PostSummary,
+		openGraph: {
+			type: 'website',
+			url: `next-demo-fty1siq61-amitchahahar.vercel.app/blog/${slug}`,
+			title: slug,
+			description: blogObj?.PostSummary,
+			siteName: 'SmartspyAI',
+			images: [
+				{
+					url: blogObj?.MainImage!,
+					width: 1200,
+					height: 630,
+				},
+			],
+		},
+		twitter: {
+			card: 'summary_large_image',
+			site: '@smartspyAi',
+			title: slug,
+			description: blogObj?.PostSummary,
+			creator: '@smartspyAi',
+			images: {
+				url: blogObj?.MainImage!,
+				alt: `Preview image for ${slug}`,
+			},
+		},
+	};
+}
 function Blog({ params }: any) {
 	const { slug } = params;
 
@@ -10,48 +48,6 @@ function Blog({ params }: any) {
 	});
 	return (
 		<div>
-			<Head>
-				<title>{blogObj?.Slug}</title>
-				<meta
-					name='description'
-					content={blogObj?.PostSummary}
-				/>
-				{/* Open Graph tags */}
-				<meta
-					property='og:title'
-					content={blogObj?.Slug}
-				/>
-				<meta
-					property='og:description'
-					content={blogObj?.PostSummary}
-				/>
-				<meta
-					property='og:image'
-					content={blogObj?.MainImage}
-				/>
-				<meta
-					property='og:url'
-					content={`https://yourwebsite.com/blog/${slug}`}
-				/>
-				<meta property='og:type' content='article' />
-				{/* Twitter card */}
-				<meta
-					name='twitter:card'
-					content='summary_large_image'
-				/>
-				<meta
-					name='twitter:title'
-					content={blogObj?.Slug}
-				/>
-				<meta
-					name='twitter:description'
-					content={blogObj?.PostSummary}
-				/>
-				<meta
-					name='twitter:image'
-					content={blogObj?.MainImage}
-				/>
-			</Head>
 			<div className='body-smartspyai-home'>
 				<section className='smartspyai-blog'>
 					<div className='w-layout-blockcontainer webflow-container w-container'>

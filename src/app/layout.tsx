@@ -12,8 +12,9 @@ const manrope = Manrope({ subsets: ['latin'] });
 // const openSans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'SmartspyAi',
-	description: '',
+	title: 'Smartspy',
+	description:
+		'Leverage cutting-edge AI techniques combined with multiple analysis tools for comprehensive and granular level vulnerability detection.',
 };
 
 export default function RootLayout({
