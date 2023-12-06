@@ -11,12 +11,18 @@ export async function generateMetadata({
 		return item.Slug == slug;
 	});
 	return {
-		title: slug,
+		title: blogObj?.Slug,
 		description: blogObj?.PostSummary,
+		authors: [
+			{
+				name: 'NaorisProtocol Team',
+				url: 'https://naorisprotocol.com/',
+			},
+		],
 		openGraph: {
-			type: 'website',
-			url: `next-demo-fty1siq61-amitchahahar.vercel.app/blog/${slug}`,
-			title: slug,
+			type: 'article',
+			url: `/blog/${slug}`,
+			title: blogObj?.Slug,
 			description: blogObj?.PostSummary,
 			siteName: 'SmartspyAI',
 			images: [
@@ -34,7 +40,7 @@ export async function generateMetadata({
 			description: blogObj?.PostSummary,
 			creator: '@smartspyAi',
 			images: {
-				url: blogObj?.MainImage!,
+				url: blogObj?.ThumbnailImage!,
 				alt: `Preview image for ${slug}`,
 			},
 		},
